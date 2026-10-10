@@ -1,0 +1,257 @@
+/* طريق الموكب — الأنماط */
+:root {
+  --bg:#faf5ea;
+  --fg:#2b2118;
+  --card:#fff;
+  --ac:#8a5a14;
+  --mu:#7a6a58;
+  --ln:#e4d8c2;
+  --rd:#d9c7a3;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media(prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#17120d;
+    --fg:#f3e9d8;
+    --card:#241c14;
+    --ac:#e0b45c;
+    --mu:#b5a58f;
+    --ln:#3a2e20;
+    --rd:#4a3a26
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#17120d;
+  --fg:#f3e9d8;
+  --card:#241c14;
+  --ac:#e0b45c;
+  --mu:#b5a58f;
+  --ln:#3a2e20;
+  --rd:#4a3a26
+}
+html,body {
+  height:100%;
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",sans-serif;
+  overflow:hidden
+}
+body {
+  display:flex;
+  flex-direction:column;
+  padding:8px 14px;
+  box-sizing:border-box;
+  gap:8px
+}
+.top {
+  display:flex;
+  align-items:center;
+  gap:8px
+}
+.top h1 {
+  font-size:1.2rem;
+  margin:0;
+  color:var(--ac);
+  flex:1
+}
+button {
+  font:inherit;
+  background:var(--ac);
+  color:var(--bg);
+  border:0;
+  border-radius:10px;
+  padding:6px 14px;
+  cursor:pointer
+}
+button.g {
+  background:transparent;
+  color:var(--ac);
+  border:1px solid var(--ac)
+}
+#sc {
+  flex:1.15;
+  min-height:0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  direction:ltr;
+  border:1px solid var(--ln);
+  border-radius:14px;
+  background:linear-gradient(var(--card),var(--bg));
+  position:relative
+}
+#cv {
+  position:relative;
+  height:100%
+}
+svg {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%
+}
+.st {
+  position:absolute;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  cursor:pointer;
+  direction:rtl;
+  width:190px
+}
+.st .c {
+  margin:auto;
+  width:var(--d);
+  height:var(--d);
+  border-radius:50%;
+  overflow:hidden;
+  border:4px solid var(--ln);
+  background:#000;
+  filter:grayscale(1) brightness(.8);
+  opacity:.55;
+  transition:.6s;
+  position:relative
+}
+.st .c img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block
+}
+.em {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  font-size:calc(var(--d)*.5);
+  background:radial-gradient(var(--card),var(--rd))
+}
+.st.vis .c {
+  filter:none;
+  opacity:1;
+  border-color:var(--ac)
+}
+.st.cur .c {
+  transform:scale(1.18);
+  box-shadow:0 0 0 6px color-mix(in srgb,var(--ac) 35%,transparent)
+}
+.st .n {
+  position:absolute;
+  top:-4px;
+  inset-inline-start:-4px;
+  background:var(--ac);
+  color:var(--bg);
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  line-height:28px;
+  font-weight:700;
+  font-size:.9rem;
+  z-index:2
+}
+.st .l {
+  margin-top:6px;
+  font-weight:700;
+  font-size:1rem
+}
+.hs {
+  position:absolute;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  direction:rtl;
+  font-weight:700
+}
+.hs i {
+  display:block;
+  font-style:normal;
+  font-size:min(14vh,5.5rem)
+}
+#gr {
+  position:absolute;
+  font-size:min(9vh,3.4rem);
+  transform:translate(-50%,-100%);
+  transition:left 1.3s ease-in-out,top 1.3s ease-in-out;
+  z-index:5;
+  filter:drop-shadow(0 4px 4px #0006)
+}
+#gr.go {
+  animation:b .45s ease-in-out 3
+}
+@keyframes b {
+  50% {
+    margin-top:-14px
+  }
+}
+#pn {
+  flex:1;
+  min-height:0;
+  background:var(--card);
+  border:1px solid var(--ln);
+  border-radius:14px;
+  padding:10px 26px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px;
+  align-items:center;
+  overflow:hidden
+}
+#pn.one {
+  grid-template-columns:1fr
+}
+.t {
+  font-size:clamp(1.5rem,3vw,3rem);
+  font-weight:700;
+  color:var(--ac)
+}
+.t small {
+  color:var(--mu);
+  font-weight:400;
+  font-size:clamp(.9rem,1.5vw,1.5rem);
+  direction:ltr;
+  display:inline-block;
+  margin-inline-start:8px
+}
+.rit,.v {
+  font-size:clamp(1.1rem,2vw,2rem);
+  line-height:1.7;
+  margin-top:6px
+}
+.v {
+  border-inline-start:4px solid var(--ac);
+  padding:4px 14px;
+  background:color-mix(in srgb,var(--ac) 8%,transparent);
+  opacity:0;
+  transition:opacity .6s
+}
+.v.on {
+  opacity:1
+}
+.v b {
+  display:block;
+  color:var(--ac);
+  font-size:clamp(1rem,1.6vw,1.6rem)
+}
+.hint {
+  text-align:center;
+  color:var(--mu);
+  font-size:clamp(1.2rem,2vw,2rem)
+}
+@media(max-width:760px) {
+  #pn,#pn.one {
+    grid-template-columns:1fr;
+    overflow:auto;
+    gap:8px;
+    padding:8px 14px
+  }
+  .top h1 {
+    font-size:1rem
+  }
+  .t {
+    font-size:1.3rem
+  }
+  .rit,.v {
+    font-size:1.05rem
+  }
+}
