@@ -195,7 +195,7 @@ svg {
   grid-template-columns:1fr 1fr;
   gap:26px;
   align-items:center;
-  overflow:hidden
+  overflow:auto
 }
 #pn.one {
   grid-template-columns:1fr
@@ -231,6 +231,14 @@ svg {
 .v b {
   display:block;
   color:var(--ac);
+  font-size:clamp(1rem,1.6vw,1.6rem)
+}
+.vs {
+  display:flex;
+  flex-direction:column;
+  gap:8px
+}
+#pn.two .rit,#pn.two .v {
   font-size:clamp(1rem,1.6vw,1.6rem)
 }
 .hint {
